@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.naufatio.BookApp.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="com.naufatio.BookApp.presentation.home.HomeFragment"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.naufatio.BookApp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_bookmark"
+        android:name="com.naufatio.BookApp.presentation.bookmark.BookmarkFragment"
+        android:label="@string/bookmark"
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.naufatio.BookApp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_explore"
+        android:name="com.naufatio.BookApp.presentation.explore.ExploreFragment"
+        android:label="@string/explore"
+        tools:layout="@layout/fragment_explore" />
 </navigation>
