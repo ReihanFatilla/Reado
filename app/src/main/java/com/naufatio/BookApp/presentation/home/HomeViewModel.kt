@@ -2,6 +2,7 @@ package com.naufatio.BookApp.presentation.home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.local.BookRepository
 import com.naufatio.BookApp.data.local.sharedpreferences.BookPreference
@@ -10,7 +11,9 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class HomeViewModel(application: Application):AndroidViewModel(application) {
+
     private lateinit var repository: BookRepository
+
     init {
         repository = BookRepository(application)
     }
@@ -23,7 +26,9 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
         repository.putPrefString(BookPreference.PREF_USER, name)
     }
 
+
     fun getData(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+
         ApiClient.getApiService().bookBySearch(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
