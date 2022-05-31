@@ -6,8 +6,14 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("volumes")
-    fun searchBook(
+    fun bookBySearch(
         @Query("q")
         query: String
+    )
+
+    @GET("volumes")
+    fun bookBySearchWithSort(
+        @Query("q") query: String,
+        @Query("orderBy") orderBy: String,
     )
 }
