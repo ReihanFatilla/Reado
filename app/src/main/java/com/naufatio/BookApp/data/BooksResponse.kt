@@ -4,11 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class BooksResponse(
 
-	@field:SerializedName("totalItems")
-	val totalItems: Int? = null,
-
 	@field:SerializedName("items")
-	val items: List<ItemsItem?>? = null
+	val items: List<ItemsItem>? = null
 )
 
 data class ItemsItem(
@@ -19,12 +16,8 @@ data class ItemsItem(
 	@field:SerializedName("volumeInfo")
 	val volumeInfo: VolumeInfo? = null,
 
-
 	@field:SerializedName("id")
 	val id: String? = null,
-
-	@field:SerializedName("selfLink")
-	val selfLink: String? = null
 
 )
 
