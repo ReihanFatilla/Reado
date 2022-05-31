@@ -3,13 +3,21 @@ package com.naufatio.BookApp.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.databinding.RowItemHomeRecommendationBinding
+import com.naufatio.BookApp.helper.OnItemClickCallback
 
 class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapter.MyViewHolder>() {
 
-    private var listBooksRecommendation = ArrayList<String>()
+    private var listBooksRecommendation = ArrayList<BooksResponse>()
 
-    fun setData(data: List<String>?) {
+    private var onItemClickCallBack: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallBack = onItemClickCallback
+    }
+
+    fun setData(data: List<BooksResponse>?) {
         if (data == null) return
         listBooksRecommendation.clear()
         listBooksRecommendation.addAll(data)
@@ -27,6 +35,10 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
             tvBookTitle.text;
             tvAuthorBook.text;
             tvRatingBook.text;
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallBack?.onItemClicked(data)
         }
     }
 

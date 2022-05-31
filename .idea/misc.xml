@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1205" />
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.161" />
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.144" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23596014492753623" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.24954710144927536" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19610507246376813" />

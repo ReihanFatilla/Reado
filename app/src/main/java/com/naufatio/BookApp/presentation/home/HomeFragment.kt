@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
+import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
+import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
 
 class HomeFragment : Fragment() {
@@ -17,6 +21,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
+
+    private val rvAdapter by lazy { (BookRecommendationsAdapter()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,9 +37,16 @@ class HomeFragment : Fragment() {
         tabs.setupWithViewPager(viewPager)
         setUpTabBar(viewPager)
 
-
+        setupRecyclerView()
 
         return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvHomeRecommendations.apply {
+            adapter = BookTabbarAdapter()
+            layoutManager = LinearLayoutManager(context)
+        }
     }
 
     private fun setUpTabBar(viewPager: ViewPager) {

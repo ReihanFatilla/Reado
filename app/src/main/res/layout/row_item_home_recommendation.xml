@@ -8,7 +8,7 @@
     android:focusable="true"
     android:orientation="vertical"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
