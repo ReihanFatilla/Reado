@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
+import com.naufatio.BookApp.helper.constant
 import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
 
 
@@ -40,8 +41,7 @@ class HomeFragment : Fragment() {
 
         val randomBookCategory = constant.BooksRecommendation.random()
 
-       viewModel.getRandomBooks(randomBookCategory)
-
+        viewModel.getRandomBooks(randomBookCategory)
 
         viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
