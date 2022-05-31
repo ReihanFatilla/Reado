@@ -31,6 +31,8 @@ class HomeFragment : Fragment() {
         tabs.setupWithViewPager(viewPager)
         setUpTabBar(viewPager)
 
+
+
         return binding.root
     }
 

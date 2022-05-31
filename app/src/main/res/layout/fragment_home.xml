@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:maxLines="1"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textColor="@color/grey"/>
 
         <TextView
@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="search and find your book!"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="13sp"
+            android:textSize="15sp"
             app:layout_constraintTop_toBottomOf="@id/tv_user_name"
             android:textColor="@color/black"/>
 
@@ -44,6 +44,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="34dp"
             android:layout_marginTop="12dp"
+            app:cardElevation="0dp"
             android:backgroundTint="@android:color/transparent"
             >
 
@@ -66,6 +67,9 @@
                         android:layout_height="30dp"
                         android:src="@drawable/ic_play"
                         android:clickable="true"
+                        app:tint="@color/PrimaryColor"
+                        android:scaleType="centerCrop"
+                        android:background="@color/white"
                         android:focusable="true"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,6 +167,7 @@
             app:tabIndicatorAnimationMode="elastic"
             app:layout_constraintTop_toBottomOf="@id/rv_home_recommendations"
             app:layout_constraintStart_toStartOf="parent"
+            app:tabRippleColor="@android:color/transparent"
             app:tabIndicator="@drawable/tab_indicator" />
 
         <androidx.viewpager.widget.ViewPager
