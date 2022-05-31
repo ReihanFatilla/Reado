@@ -3,7 +3,7 @@ package com.naufatio.BookApp.data.local.sharedpreferences
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferenceHelper(context: Context) {
+class BookPreference(context: Context) {
     var sharedPreferences: SharedPreferences
     var prefEditor: SharedPreferences.Editor
 
