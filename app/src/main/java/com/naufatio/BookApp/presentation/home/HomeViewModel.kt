@@ -26,7 +26,9 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
         repository.putPrefString(BookPreference.PREF_USER, name)
     }
 
-    fun getRandomBook(responseHandler : (List<BooksResponse>) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+
+    fun getData(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+
         ApiClient.getApiService().bookBySearch(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -38,6 +40,29 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
 
     fun getBookByCategory(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
         ApiClient.getApiService().bookSearchByCategory(category+"+insubject:")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
+    fun getBookByTitle(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
+        ApiClient.getApiService().bookSearchByCategory(title+"+intitle:")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
+
+    fun getBookByAuthor(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, author: String) {
+        ApiClient.getApiService().bookSearchByCategory(author+"+inauthor:")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

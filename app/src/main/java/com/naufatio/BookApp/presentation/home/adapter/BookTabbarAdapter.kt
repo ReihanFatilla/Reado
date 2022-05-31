@@ -8,12 +8,13 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.data.BooksResponse
+import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.RowItemHomeTabBarBinding
 import com.naufatio.BookApp.helper.OnItemClickCallback
 
 class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
 
-    private var listBooksTabbar = ArrayList<BooksResponse>()
+    private var listBooksTabbar = ArrayList<ItemsItem>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -21,7 +22,7 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(data: List<BooksResponse>?) {
+    fun setData(data: List<ItemsItem>?) {
         if (data == null) return
         listBooksTabbar.clear()
         listBooksTabbar.addAll(data)
