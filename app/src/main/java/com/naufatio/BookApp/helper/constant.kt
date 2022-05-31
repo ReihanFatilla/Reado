@@ -10,7 +10,8 @@ object constant {
         "Stock",
         "Crypto",
         "Improvements",
-        "IDN"
+        "IDN",
+        "Education"
     )
 
 }
