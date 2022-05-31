@@ -1,7 +1,9 @@
 package com.naufatio.BookApp.data
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class BooksResponse(
 
 	@field:SerializedName("totalItems")
@@ -13,7 +15,6 @@ data class BooksResponse(
 
 data class ItemsItem(
 
-
 	@field:SerializedName("searchInfo")
 	val searchInfo: SearchInfo? = null,
 
@@ -24,9 +25,9 @@ data class ItemsItem(
 	@field:SerializedName("id")
 	val id: String? = null,
 
-
 	@field:SerializedName("selfLink")
 	val selfLink: String? = null
+
 )
 
 data class ImageLinks(
