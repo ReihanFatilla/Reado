@@ -4,6 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.RowItemHomeRecommendationBinding
@@ -34,11 +37,16 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listBooksRecommendation[position]
         holder.binding.apply {
-            tvBookTitle.text;
-            tvAuthorBook.text;
-            tvRatingBook.text;
+            tvBookTitle.text = data.volumeInfo?.title
+            tvAuthorBook.text = data.volumeInfo?.authors.toString()
+            tvRatingBook.text = data.volumeInfo?.maturityRating
             Glide.with(imgBook.context)
-                .load(data)
+                .load(data.volumeInfo?.imageLinks?.thumbnail)
+                .apply(RequestOptions())
+                .override(500, 500)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
+                .into(imgBook)
         }
 
         holder.itemView.setOnClickListener {
