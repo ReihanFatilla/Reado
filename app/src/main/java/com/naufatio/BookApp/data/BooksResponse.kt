@@ -19,7 +19,6 @@ data class ItemsItem(
 	@field:SerializedName("volumeInfo")
 	val volumeInfo: VolumeInfo? = null,
 
-
 	@field:SerializedName("id")
 	val id: String? = null,
 

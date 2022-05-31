@@ -45,12 +45,12 @@ class HomeFragment : Fragment() {
 
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        viewModel.getData({
-            booksResponse.value = it
-            Log.i("Mainactivity", "onCreateView: $booksResponse")
-        }, {
-            Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
-        }, "book")
+//        viewModel.getRandomBook({
+//            booksResponse.value = it
+//            Log.i("Mainactivity", "onCreateView: $booksResponse")
+//        }, {
+//            Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
+//        }, "book")
 
         val tabs = binding.tabLayout
         val viewPager = binding.viewpager
@@ -71,12 +71,12 @@ class HomeFragment : Fragment() {
 
     private fun setUpTabBar(viewPager: ViewPager) {
         val adapter = Adapter(childFragmentManager)
-        adapter.addFragment( "General")
-        adapter.addFragment( "Fiction")
-        adapter.addFragment( "Knowledge")
-        adapter.addFragment( "Novel")
-        adapter.addFragment( "Novel")
-        adapter.addFragment( "Novel")
+        adapter.addFragment(ListBookFragment(), "General")
+        adapter.addFragment(ListBookFragment(), "Fiction")
+        adapter.addFragment(ListBookFragment(), "Knowledge")
+        adapter.addFragment(ListBookFragment(), "Novel")
+        adapter.addFragment(ListBookFragment(), "Novel")
+        adapter.addFragment(ListBookFragment(), "Novel")
         viewPager.adapter = adapter
     }
 
@@ -92,9 +92,9 @@ class HomeFragment : Fragment() {
             return mFragmentList.size
         }
 
-        fun addFragment(title: String) {
+        fun addFragment(fragment: Fragment, title: String) {
             var bundle = Bundle()
-            val fragment = ListBookFragment()
+//            val fragment =
             bundle.putString(VIEWPAGER_TITlE_KEY, title)
             fragment.arguments = bundle
             mFragmentList.add(fragment)
