@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/img_sample_book"
                 android:contentDescription="@string/txt_books_cover_image"/>
 
         </com.google.android.material.card.MaterialCardView>
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="Kevin Anderson"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintTop_toBottomOf="@id/tv_book_title" />
 

@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="0dp">
+    android:elevation="0dp"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="0dp">
 
     
     <com.google.android.material.card.MaterialCardView
