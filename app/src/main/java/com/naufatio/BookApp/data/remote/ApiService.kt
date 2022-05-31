@@ -10,4 +10,10 @@ interface ApiService {
         @Query("q")
         query: String
     )
+
+    @GET("volumes")
+    fun bookBySearchWithSort(
+        @Query("q") query: String,
+        @Query("orderBy") orderBy: String,
+    )
 }
