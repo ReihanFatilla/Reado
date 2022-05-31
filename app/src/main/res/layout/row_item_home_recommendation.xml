@@ -28,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/txt_books_cover_image"/>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -73,7 +74,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Click to see Details"
             android:textColor="@color/grey"
-            android:textSize="9sp"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@id/circle_dot"
             app:layout_constraintStart_toEndOf="@id/circle_dot"
             app:layout_constraintTop_toTopOf="@id/circle_dot" />
@@ -99,7 +100,8 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_rating_book"
             app:layout_constraintEnd_toStartOf="@id/tv_rating_book"
             app:layout_constraintTop_toTopOf="@id/tv_rating_book"
-            app:tint="@color/yellowStars" />
+            app:tint="@color/yellowStars"
+            android:contentDescription="@string/txt_star_icon_content" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
