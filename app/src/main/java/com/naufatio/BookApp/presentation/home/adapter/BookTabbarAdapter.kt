@@ -37,9 +37,17 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listBooksTabbar[position]
         holder.binding.apply {
-            tvTitleBook.text;
-            tvAuthorBook.text;
-            tvRatingBook.text;
+            tvTitleBook.text = data.volumeInfo?.title
+            tvAuthorBook.text = data.volumeInfo?.authors.toString()
+            tvRatingBook.text = data.volumeInfo?.maturityRating
+            Glide.with(imgBook.context)
+                .load(data.volumeInfo?.imageLinks?.thumbnail)
+                .apply(RequestOptions())
+                .override(500, 500)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
+                .into(imgBook)
+
         }
 
         holder.itemView.setOnClickListener {

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naufatio.BookApp.data.BooksResponse
+import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentListBookBinding
 import com.naufatio.BookApp.helper.OnItemClickCallback
 import com.naufatio.BookApp.presentation.detail.DetailActivity
@@ -44,7 +45,7 @@ class ListBookFragment() : Fragment() {
         binding.tvTest.text = getCategory
 
         viewModel.getBookByCategory({
-            showData(it)
+            showData(it.items)
             Log.i("ListBook", "onCreateView: $it")
         }, {
             Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
@@ -56,13 +57,13 @@ class ListBookFragment() : Fragment() {
         return binding.root
     }
 
-    private fun showData(data: List<BooksResponse>?) {
+    private fun showData(data: List<ItemsItem>?) {
         binding.rvHomeTabBar.apply {
             mAdapter.setData(data)
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context)
             mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                override fun onItemClicked(item: BooksResponse) {
+                override fun onItemClicked(item: ItemsItem) {
                     startActivity(
                         Intent(context, DetailActivity::class.java)
                     )

@@ -12,4 +12,5 @@
     <color name="PrimaryColor">#6073E9</color>
     <color name="grey">#7D7D7D</color>
     <color name="yellowStars">#EE9035</color>
+    <color name="cardBackroundColor">#FAFAFA</color>
 </resources>

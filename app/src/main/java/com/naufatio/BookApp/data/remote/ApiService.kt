@@ -16,16 +16,16 @@ interface ApiService {
     fun bookBySearchWithSort(
         @Query("q") query: String,
         @Query("orderBy") orderBy: String,
-    ): Flowable<List<BooksResponse>>
+    ): Flowable<BooksResponse>
 
     @GET("volumes")
     fun bookSearchByCategory(
         @Query("q") query: String
-    ): Flowable<List<BooksResponse>>
+    ): Flowable<BooksResponse>
 
     fun bookSearchByAuthor(
         @Query("q") query: String,
         @Query("author") author: String
-    ): Flowable<List<BooksResponse>>
+    ): Flowable<BooksResponse>
 
 }

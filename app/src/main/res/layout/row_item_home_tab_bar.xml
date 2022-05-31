@@ -9,9 +9,9 @@
     android:focusable="true"
     app:cardElevation="0dp">
 
-    
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:backgroundTint="@color/cardBackroundColor"
         android:layout_height="120dp"
         android:layout_gravity="bottom">
         
@@ -125,6 +125,7 @@
 
 
         <ImageView
+            android:id="@+id/img_book"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img_sample_book"

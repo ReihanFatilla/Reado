@@ -12,11 +12,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class HomeViewModel(application: Application):AndroidViewModel(application) {
 
-    private lateinit var repository: BookRepository
-
-    init {
-        repository = BookRepository(application)
-    }
+    private var repository: BookRepository = BookRepository(application)
 
     fun getUserName():String? {
         return repository.getPrefString(BookPreference.PREF_USER)
@@ -38,7 +34,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    fun getBookByCategory(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
+    fun getBookByCategory(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
         ApiClient.getApiService().bookSearchByCategory(category+"+insubject:")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -49,7 +45,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    fun getBookByTitle(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
+    fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
         ApiClient.getApiService().bookSearchByCategory(title+"+intitle:")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -61,7 +57,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     }
 
 
-    fun getBookByAuthor(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, author: String) {
+    fun getBookByAuthor(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, author: String) {
         ApiClient.getApiService().bookSearchByCategory(author+"+inauthor:")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

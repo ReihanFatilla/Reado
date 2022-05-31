@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
 
-       viewModel.getRandomBook({
+       viewModel.getData({
            booksResponse.value = it
            Log.i("Mainactivity", "onCreateView: $booksResponse")
        }, {
