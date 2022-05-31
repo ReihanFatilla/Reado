@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.rvHomeRecommendations.apply {
             adapter = BookTabbarAdapter()
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
