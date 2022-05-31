@@ -10,10 +10,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23596014492753623" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.24954710144927536" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3140101114908854" />
         <entry key="app/src/main/res/layout/fragment_list_book.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/row_item_home_book.xml" value="0.27325134277343754" />
+        <entry key="app/src/main/res/layout/row_item_home_recommendation.xml" value="0.21422101449275363" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>
