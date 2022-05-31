@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
-                android:contentDescription="books cover image"/>
+                android:contentDescription="@string/txt_books_cover_image"/>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -101,7 +101,7 @@
             app:layout_constraintEnd_toStartOf="@id/tv_rating_book"
             app:layout_constraintTop_toTopOf="@id/tv_rating_book"
             app:tint="@color/yellowStars"
-            android:contentDescription="Star icon content" />
+            android:contentDescription="@string/txt_star_icon_content" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
