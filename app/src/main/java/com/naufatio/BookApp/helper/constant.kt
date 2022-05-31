@@ -9,7 +9,8 @@ object constant {
         "Apple",
         "Stock",
         "Crypto",
-        "Improvements"
+        "Improvements",
+        "IDN"
     )
 
 }
