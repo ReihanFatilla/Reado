@@ -44,4 +44,16 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
+    fun getBookByTitle(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
+        ApiClient.getApiService().bookSearchByCategory(title+"+intitle:")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
+
 }
