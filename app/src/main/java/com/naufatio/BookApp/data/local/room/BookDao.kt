@@ -6,16 +6,15 @@ import com.naufatio.BookApp.data.BooksResponse
 
 @Dao
 interface BookDao {
-
-    @Query("SELECT * FROM BooksResponse")
-    fun getAllBookmark(): LiveData<List<BooksResponse>>
+    @Query("SELECT * FROM Book")
+    fun getAllBookmark(): LiveData<List<Book>>
 
     @Insert
-    fun addBookmark(book: BooksResponse)
+    fun addBookmark(book: Book)
 
     @Update
-    fun updateBookmark(book: BooksResponse)
+    fun updateBookmark(book: Book)
 
     @Delete
-    fun deleteBookmark(book: BooksResponse)
+    fun deleteBookmark(book: Book)
 }

@@ -1,9 +1,7 @@
 package com.naufatio.BookApp.data
 
-import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
-@Entity
 data class BooksResponse(
 
 	@field:SerializedName("totalItems")

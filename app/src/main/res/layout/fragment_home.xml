@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".presentation.home.HomeFragment"
+    android:clipToPadding="false"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:clipToPadding="false">
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -44,6 +46,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="34dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="-16dp"
             app:cardElevation="0dp"
             android:backgroundTint="@android:color/transparent"
             >
@@ -53,8 +56,8 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/PrimaryColor"
                 app:cardCornerRadius="25dp"
-                android:layout_marginEnd="-30dp"
-                android:layout_gravity="bottom" 
+                android:layout_marginEnd="-16dp"
+                android:layout_gravity="bottom"
                 android:elevation="0dp">
                 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -119,7 +122,7 @@
                 android:layout_width="75dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|end"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="50dp"
                 android:rotation="-24">
 
                 <ImageView
@@ -150,6 +153,8 @@
             android:id="@+id/rv_home_recommendations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="-12dp"
+            android:layout_marginEnd="-12dp"
             tools:listitem="@layout/row_item_home_recommendation"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
@@ -165,6 +170,8 @@
             app:tabIndicatorGravity="stretch"
             app:tabSelectedTextColor="@color/white"
             app:tabIndicatorAnimationMode="elastic"
+            android:layout_marginStart="-12dp"
+            android:layout_marginEnd="-12dp"
             app:layout_constraintTop_toBottomOf="@id/rv_home_recommendations"
             app:layout_constraintStart_toStartOf="parent"
             app:tabRippleColor="@android:color/transparent"

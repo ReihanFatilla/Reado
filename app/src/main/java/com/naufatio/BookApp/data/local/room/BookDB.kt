@@ -3,9 +3,8 @@ package com.naufatio.BookApp.data.local.room
 import android.content.Context
 import androidx.room.Database
 import androidx.room.*
-import com.naufatio.BookApp.data.BooksResponse
 
-@Database(entities = [BooksResponse::class], version = 2)
+@Database(entities = [Book::class], version = 2)
 abstract class BookDB : RoomDatabase() {
     abstract val bookDao: BookDao
 
