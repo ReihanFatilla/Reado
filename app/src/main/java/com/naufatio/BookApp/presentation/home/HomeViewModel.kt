@@ -1,7 +1,6 @@
 package com.naufatio.BookApp.presentation.home
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.naufatio.BookApp.data.BooksResponse
@@ -15,13 +14,6 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
 
     private var repository: BookRepository = BookRepository(application)
 
-    var booksResponse = MutableLiveData<BooksResponse>()
-
-
-    init {
-        repository = BookRepository(application)
-    }
-
     fun getUserName():String? {
         return repository.getPrefString(BookPreference.PREF_USER)
     }
@@ -31,7 +23,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     }
 
 
-    fun getRandomBook(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+    fun getData(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
 
         ApiClient.getApiService().bookBySearch(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -74,15 +66,6 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             }, {
                 errorHandler(it)
             })
-    }
-
-    fun getRandomBooks(books: String) {
-        getRandomBook({
-            booksResponse.value = it
-            Log.i("MainActivity", "getRandomBooks: $it")
-        }, {
-            Log.e("MainActivity", "getRandomBooks: $it", )
-        }, books)
     }
 
 }
