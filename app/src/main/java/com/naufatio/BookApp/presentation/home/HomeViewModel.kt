@@ -33,4 +33,15 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
+    fun getBookByCategory(responseHandler: (List<BooksResponse>) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
+        ApiClient.getApiService().bookSearchByCategory(category+"+insubject:")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
 }

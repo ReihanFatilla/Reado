@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.naufatio.BookApp.R
-import com.naufatio.BookApp.databinding.FragmentHomeBinding
 import com.naufatio.BookApp.databinding.FragmentListBookBinding
 import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
