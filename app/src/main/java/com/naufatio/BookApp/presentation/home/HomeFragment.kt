@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
         setUpTabBar(viewPager)
 
         return binding.root
-
     }
 
     private fun setUpTabBar(viewPager: ViewPager) {
@@ -43,7 +42,7 @@ class HomeFragment : Fragment() {
         adapter.addFragment(ListBookFragment(), "Novel")
         adapter.addFragment(ListBookFragment(), "Novel")
         adapter.addFragment(ListBookFragment(), "Novel")
-        viewPager.setAdapter(adapter)
+        viewPager.adapter = adapter
     }
 
 
@@ -59,6 +58,9 @@ class HomeFragment : Fragment() {
         }
 
         fun addFragment(fragment: Fragment, title: String) {
+            var bundle = Bundle()
+            bundle.putString(VIEWPAGER_TITlE_KEY, title)
+            fragment.arguments = bundle
             mFragmentList.add(fragment)
             mFragmentTitleList.add(title)
         }
@@ -66,10 +68,15 @@ class HomeFragment : Fragment() {
         override fun getPageTitle(position: Int): CharSequence? {
             return mFragmentTitleList[position]
         }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        const val VIEWPAGER_TITlE_KEY = "ViewPager_Title_Key"
     }
 }
