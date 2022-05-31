@@ -23,7 +23,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
         repository.putPrefString(BookPreference.PREF_USER, name)
     }
 
-    fun getData(responseHandler : (List<BooksResponse>) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+    fun getData(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
         ApiClient.getApiService().bookBySearch(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
