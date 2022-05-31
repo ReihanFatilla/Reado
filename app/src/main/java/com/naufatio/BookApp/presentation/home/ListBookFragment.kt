@@ -20,10 +20,19 @@ class ListBookFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         _binding = FragmentListBookBinding.inflate(layoutInflater)
+
+        val getCategory = arguments?.getString(HomeFragment.VIEWPAGER_TITlE_KEY)
+
+        binding.tvCategoryTest.text = getCategory
+
+
         return binding.root
+
+
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
