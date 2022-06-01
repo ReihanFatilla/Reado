@@ -25,6 +25,9 @@ data class ImageLinks(
 
 	@field:SerializedName("thumbnail")
 	val thumbnail: String? = null,
+
+	@field:SerializedName("large")
+	val large: String? = null,
 )
 
 data class SearchInfo(

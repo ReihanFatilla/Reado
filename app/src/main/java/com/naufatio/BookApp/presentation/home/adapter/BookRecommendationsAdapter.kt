@@ -38,16 +38,26 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
         val data = listBooksRecommendation[position]
         holder.binding.apply {
             tvBookTitle.text = data.volumeInfo?.title
+
             var authors = ""
             if (data.volumeInfo?.authors != null) {
                 authors = data.volumeInfo.authors.joinToString(", ")
             } else {
                 authors = "-"
             }
+
+            var image: String? = ""
+
+            if (data.volumeInfo?.imageLinks?.large != null) {
+                image = data.volumeInfo.imageLinks.large
+            } else {
+                image = data.volumeInfo?.imageLinks?.thumbnail
+            }
+
             tvAuthorBook.text = authors
             tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
             Glide.with(imgBook.context)
-                .load(data.volumeInfo?.imageLinks?.thumbnail)
+                .load(image)
                 .apply(RequestOptions())
                 .override(500, 500)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
