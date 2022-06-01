@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class BooksResponse(
-
 	@field:SerializedName("items")
 	val items: List<ItemsItem>? = null
 ): Parcelable
@@ -40,6 +39,7 @@ data class SearchInfo(
 
 	@field:SerializedName("textSnippet")
 	val textSnippet: String? = null
+
 ): Parcelable
 
 @Parcelize
