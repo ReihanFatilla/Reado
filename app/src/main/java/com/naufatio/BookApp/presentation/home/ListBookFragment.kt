@@ -44,15 +44,9 @@ class ListBookFragment() : Fragment() {
         getCategory = arguments?.getString(HomeFragment.VIEWPAGER_TITlE_KEY).toString()
         binding.tvTest.text = getCategory
 
-        viewModel.getBookByCategory({
-            showData(it.items)
-            Log.i("ListBook", "onCreateView: $it")
-        }, {
-            Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
-            Log.i("ListBookError", "onCreateView: ${it.message}")
-        }, getCategory)
+        viewModel.getRandomBooksByCategory(getCategory)
 
-
+        viewModel.booksResponse.observe(viewLifecycleOwner) { showData(it.items) }
 
         return binding.root
     }
@@ -70,7 +64,6 @@ class ListBookFragment() : Fragment() {
                 }
             })
         }
-
     }
 //
 //    private fun setupRecyclerView() {
