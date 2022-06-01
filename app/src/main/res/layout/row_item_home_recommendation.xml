@@ -61,8 +61,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/circle_dot"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
             android:layout_marginTop="15dp"
             android:backgroundTint="@color/grey"
             app:cardCornerRadius="100dp"
@@ -78,7 +78,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Click to see Details"
             android:textColor="@color/grey"
-            android:textSize="11sp"
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="@id/circle_dot"
             app:layout_constraintStart_toEndOf="@id/circle_dot"
             app:layout_constraintTop_toTopOf="@id/circle_dot" />
