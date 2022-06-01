@@ -59,6 +59,9 @@ data class VolumeInfo(
 	@field:SerializedName("categories")
 	val categories: List<String?>? = null,
 
+	@field:SerializedName("averageRating")
+	val averageRating: Int? = null,
+
 	@field:SerializedName("maturityRating")
 	val maturityRating: String? = null,
 

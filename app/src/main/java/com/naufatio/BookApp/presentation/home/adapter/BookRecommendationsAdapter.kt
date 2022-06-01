@@ -45,7 +45,7 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
                 authors = "-"
             }
             tvAuthorBook.text = authors
-            tvRatingBook.text = data.volumeInfo?.maturityRating
+            tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
             Glide.with(imgBook.context)
                 .load(data.volumeInfo?.imageLinks?.thumbnail)
                 .apply(RequestOptions())
