@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="200dp"
-    android:layout_height="wrap_content"
+    android:layout_height="350dp"
     android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
@@ -43,6 +43,8 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/cv_img_book" />
 
         <TextView
@@ -53,6 +55,8 @@
             android:text="Kevin Anderson"
             android:textSize="12sp"
             android:textStyle="normal"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/tv_book_title" />
 
         <com.google.android.material.card.MaterialCardView
