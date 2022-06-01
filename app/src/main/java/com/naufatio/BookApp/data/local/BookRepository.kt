@@ -18,4 +18,8 @@ class BookRepository(context: Context) {
         preferences.put(key, value)
     }
 
+    fun putPrefInt(key: String, value: Int) {
+        preferences.put(key, value)
+    }
+
 }

@@ -55,7 +55,13 @@ class HomeFragment : Fragment() {
         tabs.setupWithViewPager(viewPager)
         setUpTabBar(viewPager)
 
+        setUpRecentViewedBook()
+
         return binding.root
+    }
+
+    private fun setUpRecentViewedBook() {
+        val id = viewModel.getRecentBookId()
     }
 
     private fun setupRecyclerView(books: List<ItemsItem>?) {
