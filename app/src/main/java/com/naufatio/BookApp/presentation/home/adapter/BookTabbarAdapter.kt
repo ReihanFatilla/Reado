@@ -39,7 +39,7 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
         holder.binding.apply {
             tvTitleBook.text = data.volumeInfo?.title
             tvAuthorBook.text = data.volumeInfo?.authors.toString()
-            tvRatingBook.text = data.volumeInfo?.maturityRating
+            tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
             Glide.with(imgBook.context)
                 .load(data.volumeInfo?.imageLinks?.thumbnail)
                 .apply(RequestOptions())
