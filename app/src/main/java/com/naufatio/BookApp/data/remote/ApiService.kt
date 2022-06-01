@@ -3,6 +3,7 @@ package com.naufatio.BookApp.data.remote
 import com.naufatio.BookApp.data.BooksResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -10,6 +11,11 @@ interface ApiService {
     @GET("volumes")
     fun bookSearchQuery(
         @Query("q") query: String,
+    ): Flowable<BooksResponse>
+
+    @GET("volumes/{id}")
+    fun bookById(
+        @Path("id") bookId: String
     ): Flowable<BooksResponse>
 
     @GET("volumes")

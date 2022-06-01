@@ -5,9 +5,11 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.naufatio.BookApp.data.BooksResponse
+import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.data.local.BookRepository
 import com.naufatio.BookApp.data.local.sharedpreferences.BookPreference
 import com.naufatio.BookApp.data.remote.ApiClient
+import com.naufatio.BookApp.helper.constant
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -16,15 +18,15 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     private var repository: BookRepository = BookRepository(application)
 
     var booksResponse = MutableLiveData<BooksResponse>()
+    var recentBooksResponse = MutableLiveData<BooksResponse>()
 
-
-    init {
-        repository = BookRepository(application)
-
-    }
 
     fun getUserName():String? {
         return repository.getPrefString(BookPreference.PREF_USER)
+    }
+
+    fun getRecentBookId():String? {
+        return repository.getPrefString(constant.PREF_RECENT_BOOK_ID)
     }
 
     fun setUserName(name: String){
@@ -62,13 +64,23 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    fun getBooksByCategory(books: String){
-        getBookByCategory({
-            booksResponse.value = it
-            Log.i("MainActivity", "getRandomBooks: $it")
+    private fun getBookById(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, id: String) {
+        ApiClient.getApiService().bookById(id).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
+    fun getBooksById(id: String) {
+        getBookById({
+            recentBooksResponse.value = it
+            Log.i("recentBooks", "getRandomBooks: $it")
         }, {
             Log.e("MainActivity", "getRandomBooks: $it", )
-        }, books)
+        }, id)
     }
 
     fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {

@@ -15,6 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
@@ -46,22 +50,44 @@ class HomeFragment : Fragment() {
         val getRandomBookCategories = constant.BooksRecommendation.random()
 
         viewModel.getRandomBooks(getRandomBookCategories)
-
-
         viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
-        val tabs = binding.tabLayout
-        val viewPager = binding.viewpager
-        tabs.setupWithViewPager(viewPager)
-        setUpTabBar(viewPager)
+        val id = viewModel.getRecentBookId().toString()
+        viewModel.getBooksById(id)
+        viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it.items) }
 
-        setUpRecentViewedBook()
+        Log.i("PrefData", "onCreateView: ${viewModel.getRecentBookId().toString()}")
+
+        setUpTabBarAndViewPager()
 
         return binding.root
     }
 
-    private fun setUpRecentViewedBook() {
-        val id = viewModel.getRecentBookId()
+    private fun setUpTabBarAndViewPager() {
+        val tabs = binding.tabLayout
+        val viewPager = binding.viewpager
+        tabs.setupWithViewPager(viewPager)
+        setUpTabBar(viewPager)
+    }
+
+    private fun setUpRecentViewedBook(books: List<ItemsItem>?) {
+        Log.i("recentBooksId", "getRandomBooks: $books")
+        binding.apply {
+
+            val title = books!![0].volumeInfo?.title
+            val image = books!![0].volumeInfo?.imageLinks?.thumbnail
+
+            binding.tvRecentBookTitle.text = title
+            Glide.with(this@HomeFragment)
+                .load(image)
+                .apply(RequestOptions())
+                .override(500, 500)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
+                .into(imgRecentBook)
+
+
+        }
     }
 
     private fun setupRecyclerView(books: List<ItemsItem>?) {

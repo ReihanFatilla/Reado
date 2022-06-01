@@ -14,8 +14,8 @@ object constant {
         "Education"
     )
 
-    val EXTRA_BOOK_INTENT = "extra_book_intent"
+    const val EXTRA_BOOK_INTENT = "extra_book_intent"
 
-    val PREF_RECENT_BOOK_ID = "pref_recent_id"
+    const val PREF_RECENT_BOOK_ID = "pref_recent_id"
 
 }

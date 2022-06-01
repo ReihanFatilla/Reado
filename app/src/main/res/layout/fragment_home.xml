@@ -58,7 +58,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="34dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="-16dp"
                     app:cardElevation="0dp"
                     android:backgroundTint="@android:color/transparent"
@@ -66,7 +65,7 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         app:cardCornerRadius="25dp"
                         android:layout_marginEnd="-16dp"
                         android:layout_gravity="bottom"
@@ -79,9 +78,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/btn_recent_book"
-                                android:layout_width="30dp"
+                                android:layout_width="25dp"
                                 app:cardCornerRadius="150dp"
-                                android:layout_height="30dp"
+                                android:layout_height="25dp"
                                 android:layout_marginStart="16dp"
                                 android:clickable="true"
                                 android:focusable="true"
@@ -90,8 +89,8 @@
                                 app:layout_constraintStart_toStartOf="parent">
 
                                 <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
                                     android:src="@drawable/ic_play"
                                     app:tint="@color/PrimaryColor"
                                     android:scaleType="centerCrop"
@@ -125,6 +124,7 @@
                                     android:textColor="@color/white"/>
 
                                 <TextView
+                                    android:id="@+id/tv_recent_book_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:maxLines="1"
@@ -153,6 +153,7 @@
                         android:layout_marginBottom="-18dp">
 
                         <ImageView
+                            android:id="@+id/img_recent_book"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:src="@drawable/img_sample_book"
