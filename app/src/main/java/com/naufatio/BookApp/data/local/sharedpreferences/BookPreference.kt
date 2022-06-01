@@ -22,8 +22,17 @@ class BookPreference(context: Context) {
             .apply()
     }
 
+    fun put(key: String, value: Int){
+        prefEditor.putInt(key, value)
+            .apply()
+    }
+
     fun getBoolean(key: String): Boolean {
         return sharedPreferences.getBoolean(key, false)
+    }
+
+    fun getInteger(key: String): Int {
+        return sharedPreferences.getInt(key, 1)
     }
 
     fun getString(key: String): String? {
