@@ -20,6 +20,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
 
     init {
         repository = BookRepository(application)
+
     }
 
     fun getUserName():String? {

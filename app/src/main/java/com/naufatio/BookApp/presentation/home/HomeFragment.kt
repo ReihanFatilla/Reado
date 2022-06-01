@@ -5,16 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
-import com.naufatio.BookApp.helper.constant
 import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
+import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
 
 class HomeFragment : Fragment() {
@@ -28,6 +33,9 @@ class HomeFragment : Fragment() {
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel as HomeViewModel
 
+    var booksResponse = MutableLiveData<BooksResponse>()
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,11 +45,16 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        val randomBookCategory = constant.BooksRecommendation.random()
 
-        viewModel.getRandomBooks(randomBookCategory)
+       viewModel.getRandomBook({
+           booksResponse.value = it
+           Log.i("Mainactivity", "onCreateView: $booksResponse")
+       }, {
+           Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
+       }, "book")
 
-        viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
+
+        booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
         val tabs = binding.tabLayout
         val viewPager = binding.viewpager

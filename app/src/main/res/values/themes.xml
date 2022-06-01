@@ -14,4 +14,8 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="CollapseToolbarTheme">
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>
