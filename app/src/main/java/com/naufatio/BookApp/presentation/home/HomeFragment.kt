@@ -34,9 +34,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         val randomBookCategory = constant.BooksRecommendation.random()

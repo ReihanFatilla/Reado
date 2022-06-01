@@ -38,7 +38,13 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
         val data = listBooksRecommendation[position]
         holder.binding.apply {
             tvBookTitle.text = data.volumeInfo?.title
-            tvAuthorBook.text = data.volumeInfo?.authors.toString()
+            var authors = ""
+            if (data.volumeInfo?.authors != null) {
+                authors = data.volumeInfo.authors.joinToString(", ")
+            } else {
+                authors = "-"
+            }
+            tvAuthorBook.text = authors
             tvRatingBook.text = data.volumeInfo?.maturityRating
             Glide.with(imgBook.context)
                 .load(data.volumeInfo?.imageLinks?.thumbnail)
