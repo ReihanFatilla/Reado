@@ -22,6 +22,9 @@ class ExploreFragment : Fragment() {
     ): View {
 
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
+
+        //remove actionbar
+        activity?.actionBar?.hide()
         return binding.root
     }
 

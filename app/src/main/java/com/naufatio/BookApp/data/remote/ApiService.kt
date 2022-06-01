@@ -1,6 +1,7 @@
 package com.naufatio.BookApp.data.remote
 
 import com.naufatio.BookApp.data.BooksResponse
+import com.naufatio.BookApp.data.ItemsItem
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,7 +17,7 @@ interface ApiService {
     @GET("volumes/{id}")
     fun bookById(
         @Path("id") bookId: String
-    ): Flowable<BooksResponse>
+    ): Flowable<ItemsItem>
 
     @GET("volumes")
     fun bookBySearchWithSort(

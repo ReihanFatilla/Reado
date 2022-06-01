@@ -18,7 +18,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     private var repository: BookRepository = BookRepository(application)
 
     var booksResponse = MutableLiveData<BooksResponse>()
-    var recentBooksResponse = MutableLiveData<BooksResponse>()
+    var recentBooksResponse = MutableLiveData<ItemsItem>()
 
 
     fun getUserName():String? {
@@ -64,7 +64,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    private fun getBookById(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, id: String) {
+    private fun getBookById(responseHandler : (ItemsItem) -> Unit, errorHandler : (Throwable) -> Unit, id: String) {
         ApiClient.getApiService().bookById(id).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
