@@ -86,7 +86,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
         }, books)
     }
 
-    fun getRandomBooksByCategoriy(category: String) {
+    fun getRandomBooksByCategory(category: String) {
         getBookByCategory({
             booksResponse.value = it
             Log.i("HomeViewModel", "getRandomBooks: $it")
