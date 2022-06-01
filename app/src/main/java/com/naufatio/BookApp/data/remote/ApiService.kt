@@ -6,10 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+
     @GET("volumes")
-    fun bookBySearch(
-        @Query("q")
-        query: String
+    fun bookSearchQuery(
+        @Query("q") query: String,
     ): Flowable<BooksResponse>
 
     @GET("volumes")
@@ -19,8 +19,15 @@ interface ApiService {
     ): Flowable<BooksResponse>
 
     @GET("volumes")
+    fun bookRandomCategory(
+        @Query("q") query: String,
+        @Query("orderBy") category: String = "newest"
+    ): Flowable<BooksResponse>
+
+    @GET("volumes")
     fun bookSearchByCategory(
-        @Query("q") query: String
+        @Query("q") query: String,
+        @Query("orderBy") category: String = "newest"
     ): Flowable<BooksResponse>
 
     fun bookSearchByAuthor(

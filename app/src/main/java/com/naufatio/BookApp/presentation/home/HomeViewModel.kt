@@ -32,9 +32,8 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     }
 
 
-    fun getRandomBook(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
-
-        ApiClient.getApiService().bookBySearch(books).subscribeOn(Schedulers.io())
+    private fun getRandomBook(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+        ApiClient.getApiService().bookRandomCategory(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 responseHandler(it)
@@ -43,7 +42,16 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    fun getBookByCategory(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
+    fun getRandomBooks(books: String) {
+        getRandomBook({
+            booksResponse.value = it
+            Log.i("MainActivity", "getRandomBooks: $it")
+        }, {
+            Log.e("MainActivity", "getRandomBooks: $it", )
+        }, books)
+    }
+
+    private fun getBookByCategory(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
         ApiClient.getApiService().bookSearchByCategory(category+"+insubject:")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -52,6 +60,15 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             }, {
                 errorHandler(it)
             })
+    }
+
+    fun getBooksByCategory(books: String){
+        getBookByCategory({
+            booksResponse.value = it
+            Log.i("MainActivity", "getRandomBooks: $it")
+        }, {
+            Log.e("MainActivity", "getRandomBooks: $it", )
+        }, books)
     }
 
     fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
@@ -77,14 +94,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
             })
     }
 
-    fun getRandomBooks(books: String) {
-        getRandomBook({
-            booksResponse.value = it
-            Log.i("MainActivity", "getRandomBooks: $it")
-        }, {
-            Log.e("MainActivity", "getRandomBooks: $it", )
-        }, books)
-    }
+
 
     fun getRandomBooksByCategory(category: String) {
         getBookByCategory({

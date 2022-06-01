@@ -70,12 +70,14 @@ class HomeFragment : Fragment() {
 
     private fun setUpTabBar(viewPager: ViewPager) {
         val adapter = Adapter(childFragmentManager)
-        adapter.addFragment("General")
-        adapter.addFragment("Fiction")
-        adapter.addFragment("Knowledge")
-        adapter.addFragment("Novel")
-        adapter.addFragment("Novel")
-        adapter.addFragment("Novel")
+        adapter.addFragment("Science Fiction")
+        adapter.addFragment("History")
+        adapter.addFragment("Crime")
+        adapter.addFragment("Economy")
+        adapter.addFragment("Horror")
+        adapter.addFragment("Fashion")
+        adapter.addFragment("Biography")
+        adapter.addFragment("Cooking")
         viewPager.adapter = adapter
     }
 

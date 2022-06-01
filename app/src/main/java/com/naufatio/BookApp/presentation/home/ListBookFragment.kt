@@ -42,16 +42,18 @@ class ListBookFragment() : Fragment() {
 //        setupRecyclerView()
 
         getCategory = arguments?.getString(HomeFragment.VIEWPAGER_TITlE_KEY).toString()
-        binding.tvTest.text = getCategory
 
         viewModel.getRandomBooksByCategory(getCategory)
 
-        viewModel.booksResponse.observe(viewLifecycleOwner) { showData(it.items) }
+        viewModel.booksResponse.observe(viewLifecycleOwner) {
+            setUpRecyclerView(it.items)
+        }
+
 
         return binding.root
     }
 
-    private fun showData(data: List<ItemsItem>?) {
+    private fun setUpRecyclerView(data: List<ItemsItem>?) {
         binding.rvHomeTabBar.apply {
             mAdapter.setData(data)
             adapter = mAdapter
@@ -65,14 +67,6 @@ class ListBookFragment() : Fragment() {
             })
         }
     }
-//
-//    private fun setupRecyclerView() {
-//        binding.rvHomeTabBar.apply {
-//            adapter = BookTabbarAdapter()
-//            layoutManager = LinearLayoutManager(context)
-//        }
-//
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
