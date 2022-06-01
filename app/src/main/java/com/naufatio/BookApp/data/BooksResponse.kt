@@ -1,13 +1,17 @@
 package com.naufatio.BookApp.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class BooksResponse(
 
 	@field:SerializedName("items")
 	val items: List<ItemsItem>? = null
-)
+): Parcelable
 
+@Parcelize
 data class ItemsItem(
 
 	@field:SerializedName("searchInfo")
@@ -19,20 +23,23 @@ data class ItemsItem(
 	@field:SerializedName("id")
 	val id: String? = null,
 
-)
+): Parcelable
 
+@Parcelize
 data class ImageLinks(
 
 	@field:SerializedName("thumbnail")
 	val thumbnail: String? = null,
-)
+): Parcelable
 
+@Parcelize
 data class SearchInfo(
 
 	@field:SerializedName("textSnippet")
 	val textSnippet: String? = null
-)
+): Parcelable
 
+@Parcelize
 data class VolumeInfo(
 
 	@field:SerializedName("pageCount")
@@ -67,4 +74,4 @@ data class VolumeInfo(
 
 	@field:SerializedName("authors")
 	val authors: List<String?>? = null,
-)
+): Parcelable
