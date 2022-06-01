@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/row_item_home_book.xml" value="0.27325134277343754" />
         <entry key="app/src/main/res/layout/row_item_home_recommendation.xml" value="0.21422101449275363" />
         <entry key="app/src/main/res/layout/row_item_home_tab_bar.xml" value="0.23777173913043478" />
+        <entry key="app/src/main/res/layout/row_item_tab_bar.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>
