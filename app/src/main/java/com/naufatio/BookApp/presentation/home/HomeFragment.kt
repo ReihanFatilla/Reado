@@ -27,8 +27,6 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val rvAdapter by lazy { (BookRecommendationsAdapter()) }
-
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel as HomeViewModel
 
@@ -50,8 +48,6 @@ class HomeFragment : Fragment() {
         viewModel.getBooksById(id)
         viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
 
-        Log.i("PrefData", "onCreateView: ${viewModel.getRecentBookId().toString()}")
-
         setUpTabBarAndViewPager()
 
         return binding.root
@@ -65,11 +61,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpRecentViewedBook(books: ItemsItem) {
-        Log.i("recentBooksId", "getRandomBooks: $books")
         binding.apply {
 
             val title = books.volumeInfo?.title
-            val image = books.volumeInfo?.imageLinks?.thumbnail
+            var image: String? = ""
+
+            if (books.volumeInfo?.imageLinks?.large != null) {
+                image = books.volumeInfo.imageLinks.large
+            } else {
+                image = books.volumeInfo?.imageLinks?.thumbnail
+            }
 
             binding.tvRecentBookTitle.text = title
             Glide.with(this@HomeFragment)

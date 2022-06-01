@@ -36,12 +36,28 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listBooksTabbar[position]
+
+        var authors = ""
+        if (data.volumeInfo?.authors != null) {
+            authors = data.volumeInfo.authors.joinToString(", ")
+        } else {
+            authors = "-"
+        }
+
+        var image: String? = ""
+
+        if (data.volumeInfo?.imageLinks?.large != null) {
+            image = data.volumeInfo.imageLinks.large
+        } else {
+            image = data.volumeInfo?.imageLinks?.thumbnail
+        }
+
         holder.binding.apply {
             tvTitleBook.text = data.volumeInfo?.title
-            tvAuthorBook.text = data.volumeInfo?.authors.toString()
+            tvAuthorBook.text = authors
             tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
             Glide.with(imgBook.context)
-                .load(data.volumeInfo?.imageLinks?.thumbnail)
+                .load(image)
                 .apply(RequestOptions())
                 .override(500, 500)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
