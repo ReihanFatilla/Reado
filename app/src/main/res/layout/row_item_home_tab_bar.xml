@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardElevation="0dp">
+    app:cardElevation="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
             android:id="@+id/tv_desc_book"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="53dp"
             android:fontFamily="@font/poppins_medium"
             android:text="A Bedtime Story For Kids"
@@ -86,7 +86,8 @@
             android:layout_height="8dp"
             app:cardCornerRadius="150dp"
             app:layout_constraintStart_toStartOf="@id/tv_desc_book"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/cv_img"
+            android:layout_marginBottom="6dp"
             android:backgroundTint="@color/grey" />
 
         <TextView
