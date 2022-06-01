@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
+import com.naufatio.BookApp.helper.constant
 import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
 import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
@@ -33,9 +34,6 @@ class HomeFragment : Fragment() {
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel as HomeViewModel
 
-    var booksResponse = MutableLiveData<BooksResponse>()
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,16 +43,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
+        val getRandomBookCategories = constant.BooksRecommendation.random()
 
-       viewModel.getRandomBook({
-           booksResponse.value = it
-           Log.i("Mainactivity", "onCreateView: $booksResponse")
-       }, {
-           Toast.makeText(context, "Error $it", Toast.LENGTH_SHORT).show()
-       }, "book")
+        viewModel.getRandomBooks(getRandomBookCategories)
 
 
-        booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
+        viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
         val tabs = binding.tabLayout
         val viewPager = binding.viewpager
