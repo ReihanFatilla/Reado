@@ -12,9 +12,6 @@ interface BookDao {
     @Insert
     fun addBookmark(book: Book)
 
-    @Update
-    fun updateBookmark(book: Book)
-
     @Delete
     fun deleteBookmark(book: Book)
 }

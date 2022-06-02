@@ -137,7 +137,7 @@ class HomeFragment : Fragment() {
         fun addFragment(title: String) {
             var bundle = Bundle()
             val fragment = ListBookFragment()
-            bundle.putString(VIEWPAGER_TITlE_KEY, title)
+            bundle.putString(constant.VIEWPAGER_TITlE_KEY, title)
             fragment.arguments = bundle
             mFragmentList.add(fragment)
             mFragmentTitleList.add(title)
@@ -153,7 +153,4 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    companion object{
-        const val VIEWPAGER_TITlE_KEY = "ViewPager_Title_Key"
-    }
 }

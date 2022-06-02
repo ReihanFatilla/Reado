@@ -20,7 +20,6 @@ class ExploreFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
 
         setUpSortByMenu()
@@ -52,11 +51,9 @@ class ExploreFragment : Fragment() {
             }
 
         })
-
         binding.svBook.setOnQueryTextFocusChangeListener { _, b ->
             if (!b) {
                 binding.cvSortBy.visibility = View.GONE
-
             } else {
                 binding.cvSortBy.visibility = View.VISIBLE
             }
