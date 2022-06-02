@@ -1,12 +1,14 @@
 package com.naufatio.BookApp.presentation.explore
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
@@ -15,6 +17,9 @@ class ExploreFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    private var _viewModel: ExploreViewModel? = null
+    private val viewModel get() = _viewModel as ExploreViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,7 +27,10 @@ class ExploreFragment : Fragment() {
     ): View {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
 
+        _viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
+
         setUpSortByMenu()
+
 
         return binding.root
     }
@@ -47,6 +55,8 @@ class ExploreFragment : Fragment() {
                     tvSearchPublisher.text = newText
                     tvSearchAuthor.text = newText
                 }
+                newText?.let { searchByCategory(it) }
+                Log.i("NewText", "onQueryTextChange: $newText")
                 return false
             }
 
@@ -59,6 +69,31 @@ class ExploreFragment : Fragment() {
             }
         }
     }
+
+    private fun searchByCategory(text: String) {
+        binding.apply {
+            cvSearchTitle.setOnClickListener {
+                viewModel.searchBookInTitle(text)
+            }
+            cvSearchAuthor.setOnClickListener {
+                viewModel.searchBookInAuthor(text)
+
+            }
+            cvSearchCategory.setOnClickListener {
+                viewModel.searchBookInCategory(text)
+
+            }
+            cvSearchPublisher.setOnClickListener {
+                viewModel.searchBookInPublisher(text)
+
+            }
+        }
+
+        viewModel.booksResponse.observe(viewLifecycleOwner) {
+            Log.i("ExploreFragment", "searchByCategory: ${it.items}")
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
