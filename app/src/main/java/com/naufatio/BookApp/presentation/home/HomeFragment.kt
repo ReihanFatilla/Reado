@@ -1,26 +1,27 @@
 package com.naufatio.BookApp.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
-import com.naufatio.BookApp.data.BooksResponse
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
+import com.naufatio.BookApp.helper.OnItemClickCallback
 import com.naufatio.BookApp.helper.constant
+import com.naufatio.BookApp.presentation.detail.DetailActivity
 import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
-import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
 
 class HomeFragment : Fragment() {
@@ -28,8 +29,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
-
-    private val rvAdapter by lazy { (BookRecommendationsAdapter()) }
 
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel as HomeViewModel
@@ -46,32 +45,74 @@ class HomeFragment : Fragment() {
         val getRandomBookCategories = constant.BooksRecommendation.random()
 
         viewModel.getRandomBooks(getRandomBookCategories)
-
-
         viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
+        val id = viewModel.getRecentBookId().toString()
+        viewModel.getBooksById(id)
+        viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
+
+        setUpTabBarAndViewPager()
+
+        return binding.root
+    }
+
+    private fun setUpTabBarAndViewPager() {
         val tabs = binding.tabLayout
         val viewPager = binding.viewpager
         tabs.setupWithViewPager(viewPager)
         setUpTabBar(viewPager)
+    }
 
-        return binding.root
+    private fun setUpRecentViewedBook(books: ItemsItem) {
+        binding.apply {
+
+            val title = books.volumeInfo?.title
+            var image: String? = ""
+
+            if (books.volumeInfo?.imageLinks?.large != null) {
+                image = books.volumeInfo.imageLinks.large
+            } else {
+                image = books.volumeInfo?.imageLinks?.thumbnail
+            }
+
+            binding.tvRecentBookTitle.text = title
+            Glide.with(this@HomeFragment)
+                .load(image)
+                .apply(RequestOptions())
+                .override(500, 500)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
+                .into(imgRecentBook)
+        }
+
+        binding.btnRecentBook.setOnClickListener {
+            startActivity(
+                Intent(context, DetailActivity::class.java)
+            )
+        }
     }
 
     private fun setupRecyclerView(books: List<ItemsItem>?) {
         binding.rvHomeRecommendations.apply {
             val mAdapter = BookRecommendationsAdapter()
             mAdapter.setData(books)
-            Log.i("Mainactivity", "setupRecyclerView: $books")
             adapter = mAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                override fun onItemClicked(data: ItemsItem) {
+                    startActivity(
+                        Intent(context, DetailActivity::class.java)
+                            .putExtra(constant.EXTRA_BOOK_INTENT, data)
+                    )
+                }
+            })
         }
     }
 
     private fun setUpTabBar(viewPager: ViewPager) {
         val adapter = Adapter(childFragmentManager)
-        adapter.addFragment("Science Fiction")
         adapter.addFragment("History")
+        adapter.addFragment("Technology")
         adapter.addFragment("Crime")
         adapter.addFragment("Economy")
         adapter.addFragment("Horror")

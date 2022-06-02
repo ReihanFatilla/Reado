@@ -16,6 +16,7 @@ import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentListBookBinding
 import com.naufatio.BookApp.helper.OnItemClickCallback
+import com.naufatio.BookApp.helper.constant
 import com.naufatio.BookApp.presentation.detail.DetailActivity
 import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
@@ -62,6 +63,7 @@ class ListBookFragment() : Fragment() {
                 override fun onItemClicked(item: ItemsItem) {
                     startActivity(
                         Intent(context, DetailActivity::class.java)
+                            .putExtra(constant.EXTRA_BOOK_INTENT, item)
                     )
                 }
             })

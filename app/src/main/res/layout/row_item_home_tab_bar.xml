@@ -7,13 +7,15 @@
     android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
+    android:backgroundTint="@color/cardBackroundColor"
     app:cardElevation="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingVertical="10dp"
-        android:paddingHorizontal="12dp">
+        android:paddingStart="12dp"
+        android:paddingEnd="24dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_img"

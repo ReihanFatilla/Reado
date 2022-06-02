@@ -7,6 +7,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
+    android:backgroundTint="@color/cardBackroundColor"
     app:cardCornerRadius="10dp"
     app:cardElevation="1dp">
 
