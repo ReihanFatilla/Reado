@@ -1,4 +1,4 @@
-package com.naufatio.BookApp.presentation.bookmark
+package com.naufatio.BookApp.helper
 
 import androidx.recyclerview.widget.DiffUtil
 import com.naufatio.BookApp.data.local.room.Book

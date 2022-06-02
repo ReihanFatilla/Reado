@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naufatio.BookApp.databinding.FragmentBookmarkBinding
-import com.naufatio.BookApp.presentation.detail.DetailViewModel
-import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
+import com.naufatio.BookApp.presentation.bookmark.adapter.BookmarkAdapter
 
 class BookmarkFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.naufatio.BookApp.presentation.bookmark
+package com.naufatio.BookApp.presentation.bookmark.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +8,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.naufatio.BookApp.data.BooksResponse
-import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.data.local.room.Book
 import com.naufatio.BookApp.databinding.RowItemHomeTabBarBinding
+import com.naufatio.BookApp.helper.BookDiffUtil
 
 class BookmarkAdapter:RecyclerView.Adapter<BookmarkAdapter.MyViewHolder>() {
 
