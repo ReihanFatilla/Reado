@@ -47,6 +47,17 @@ class BookRepository(context: Context) {
             })
     }
 
+    fun searchBookQuery(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, query: String) {
+        apiService.bookSearchQuery(query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
     fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
         apiService.bookBySearchWithSort("$title+intitle:")
             .subscribeOn(Schedulers.io())

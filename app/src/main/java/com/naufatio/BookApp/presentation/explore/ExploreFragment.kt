@@ -44,6 +44,9 @@ class ExploreFragment : Fragment() {
         binding.svBook.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    viewModel.searchBookByQuery(query)
+                }
                 return false
             }
 
@@ -77,15 +80,12 @@ class ExploreFragment : Fragment() {
             }
             cvSearchAuthor.setOnClickListener {
                 viewModel.searchBookInAuthor(text)
-
             }
             cvSearchCategory.setOnClickListener {
                 viewModel.searchBookInCategory(text)
-
             }
             cvSearchPublisher.setOnClickListener {
                 viewModel.searchBookInPublisher(text)
-
             }
         }
 

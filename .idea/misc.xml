@@ -7,7 +7,11 @@
         <entry key="app/src/main/res/drawable/cursor_text_color.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/ic_favorite_selector.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/ic_toggle_favorite.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.161" />
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.144" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.23777173913043478" />
