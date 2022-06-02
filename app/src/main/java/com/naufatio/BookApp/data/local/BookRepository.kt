@@ -108,7 +108,7 @@ class BookRepository(context: Context) {
         dao.addBookmark(book)
     }
 
-    suspend fun getBookmark(): LiveData<List<Book>> {
+    fun getBookmark(): LiveData<List<Book>> {
         return dao.getAllBookmark()
     }
 
