@@ -104,15 +104,15 @@ class BookRepository(context: Context) {
         preferences.put(key, value)
     }
 
-    fun addBookmark(book: Book) {
+    suspend fun addBookmark(book: Book) {
         dao.addBookmark(book)
     }
 
-    fun getBookmark(): LiveData<List<Book>> {
+    suspend fun getBookmark(): LiveData<List<Book>> {
         return dao.getAllBookmark()
     }
 
-    fun deleteBookmark(book: Book) {
+    suspend fun deleteBookmark(book: Book) {
         dao.deleteBookmark(book)
     }
 

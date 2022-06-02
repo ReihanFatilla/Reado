@@ -10,8 +10,8 @@ interface BookDao {
     fun getAllBookmark(): LiveData<List<Book>>
 
     @Insert
-    fun addBookmark(book: Book)
+    suspend fun addBookmark(book: Book)
 
     @Delete
-    fun deleteBookmark(book: Book)
+    suspend fun deleteBookmark(book: Book)
 }
