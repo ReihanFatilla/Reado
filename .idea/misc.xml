@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.213" />
+        <entry key="app/src/main/res/drawable/cursor_text_color.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.1205" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1205" />
@@ -13,7 +14,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23596014492753623" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.24954710144927536" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2341217041015625" />
         <entry key="app/src/main/res/layout/fragment_list_book.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.19610507246376813" />

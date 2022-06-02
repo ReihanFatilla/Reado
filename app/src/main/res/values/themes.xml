@@ -13,9 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
+        <item name="android:textCursorDrawable">@drawable/cursor_text_color</item>
     </style>
 
     <style name="CollapseToolbarTheme">
         <item name="android:background">@color/white</item>
     </style>
+
 </resources>
