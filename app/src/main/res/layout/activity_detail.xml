@@ -47,6 +47,7 @@
 
             </androidx.cardview.widget.CardView>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -73,6 +74,7 @@
         android:textColor="#979797" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#F6F6F4"
@@ -113,6 +115,36 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_rating_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Positive "
+        app:layout_constraintStart_toEndOf="@id/cv_rating"
+        app:layout_constraintTop_toTopOf="@id/cv_rating"
+        app:layout_constraintBottom_toBottomOf="@id/cv_rating"
+        android:layout_marginLeft="10dp"
+        android:textSize="14dp"
+        android:textColor="#2E2E2E" />
+
+    <TextView
+        android:id="@+id/tv_total_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(647 Reviews)"
+        app:layout_constraintStart_toEndOf="@id/tv_rating_rate"
+        app:layout_constraintTop_toTopOf="@id/tv_rating_rate"
+        app:layout_constraintBottom_toBottomOf="@id/tv_rating_rate"
+        android:textSize="14dp"
+        android:textColor="#2E2E2E" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_rating"
+        android:layout_marginTop="26dp"
+        android:textColor="#979797" />
 
 
 
