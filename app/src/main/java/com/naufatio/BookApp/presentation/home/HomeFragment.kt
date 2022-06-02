@@ -88,6 +88,7 @@ class HomeFragment : Fragment() {
         binding.btnRecentBook.setOnClickListener {
             startActivity(
                 Intent(context, DetailActivity::class.java)
+                    .putExtra(constant.EXTRA_BOOK_INTENT, books)
             )
         }
     }
