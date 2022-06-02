@@ -38,14 +38,14 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
         val data = listBooksTabbar[position]
 
         var authors = ""
+        var image: String? = ""
+        var rating = (data.volumeInfo?.averageRating ?: (1..10).random()).toString() + "." + (data.volumeInfo?.averageRating ?: (1..10).random()).toString()
+
         if (data.volumeInfo?.authors != null) {
             authors = data.volumeInfo.authors.joinToString(", ")
         } else {
             authors = "-"
         }
-
-        var image: String? = ""
-
         if (data.volumeInfo?.imageLinks?.large != null) {
             image = data.volumeInfo.imageLinks.large
         } else {
@@ -55,7 +55,7 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
         holder.binding.apply {
             tvTitleBook.text = data.volumeInfo?.title
             tvAuthorBook.text = authors
-            tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
+            tvRatingBook.text = rating
             Glide.with(imgBook.context)
                 .load(image)
                 .apply(RequestOptions())

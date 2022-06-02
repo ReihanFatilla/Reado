@@ -42,7 +42,7 @@ class ListBookFragment() : Fragment() {
 
 //        setupRecyclerView()
 
-        getCategory = arguments?.getString(HomeFragment.VIEWPAGER_TITlE_KEY).toString()
+        getCategory = arguments?.getString(constant.VIEWPAGER_TITlE_KEY).toString()
 
         viewModel.getRandomBooksByCategory(getCategory)
 

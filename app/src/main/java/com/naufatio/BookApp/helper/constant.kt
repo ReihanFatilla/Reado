@@ -18,4 +18,10 @@ object constant {
 
     const val PREF_RECENT_BOOK_ID = "pref_recent_id"
 
+    const val VIEWPAGER_TITlE_KEY = "ViewPager_Title_Key"
+
+    const val PREF_USER = "user_preference"
+
+    const val PREF_NAME = "PREF_NAME"
+
 }

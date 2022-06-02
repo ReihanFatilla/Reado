@@ -40,14 +40,13 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
             tvBookTitle.text = data.volumeInfo?.title
 
             var authors = ""
+            var image: String? = ""
+            var rating = (data.volumeInfo?.averageRating ?: (1..10).random()).toString() + "." + (data.volumeInfo?.averageRating ?: (1..10).random()).toString()
             if (data.volumeInfo?.authors != null) {
                 authors = data.volumeInfo.authors.joinToString(", ")
             } else {
                 authors = "-"
             }
-
-            var image: String? = ""
-
             if (data.volumeInfo?.imageLinks?.large != null) {
                 image = data.volumeInfo.imageLinks.large
             } else {
@@ -55,7 +54,8 @@ class BookRecommendationsAdapter : RecyclerView.Adapter<BookRecommendationsAdapt
             }
 
             tvAuthorBook.text = authors
-            tvRatingBook.text = (data.volumeInfo?.averageRating ?: 0).toString()
+            tvRatingBook.text = rating
+
             Glide.with(imgBook.context)
                 .load(image)
                 .apply(RequestOptions())
