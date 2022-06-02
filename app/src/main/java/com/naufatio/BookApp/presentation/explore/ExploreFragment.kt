@@ -15,12 +15,16 @@ class ExploreFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    private var _viewModel: ExploreViewModel? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
+
+        _viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
 
         setUpSortByMenu()
 
