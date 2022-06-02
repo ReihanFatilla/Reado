@@ -12,12 +12,18 @@ class ExploreViewModel(application: Application) : AndroidViewModel(application)
 
     var booksResponse = MutableLiveData<BooksResponse>()
 
+    fun searchBookWithoutTerms(query: String?) {
+        query?.let {
+            repository.getBookByQuery({
+                booksResponse.value = it
+            }, {}, it)
+        }
+    }
+
     fun searchBookInTitle(title: String) {
         repository.getBookByTitle({
             booksResponse.value = it
-        }, {
-            Log.e("Explore", "searchBookInTitle: $it", )
-        }, title)
+        }, {}, title)
     }
 
     fun searchBookInAuthor(author: String) {

@@ -35,7 +35,7 @@ class HomeViewModel(application: Application):AndroidViewModel(application) {
     }
 
     fun getRandomBooks(books: String) {
-        repository.getRandomBook({
+        repository.getBookByQuery({
             booksResponse.value = it
         }, {}, books)
     }

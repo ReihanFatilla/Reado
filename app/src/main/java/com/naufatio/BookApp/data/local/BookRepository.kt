@@ -16,7 +16,7 @@ class BookRepository(context: Context) {
     private val dao = BookDB.invoke(context).bookDao
     private val apiService = ApiClient.getApiService()
 
-    fun getRandomBook(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
+    fun getBookByQuery(responseHandler : (BooksResponse) -> Unit, errorHandler : (Throwable) -> Unit, books: String) {
         apiService.bookRandomCategory(books).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

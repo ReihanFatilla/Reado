@@ -50,6 +50,7 @@ class ExploreFragment : Fragment() {
         binding.svBook.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.searchBookWithoutTerms(query)
                 return false
             }
 
