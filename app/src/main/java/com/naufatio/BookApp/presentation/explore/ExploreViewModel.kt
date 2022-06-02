@@ -1,6 +1,7 @@
 package com.naufatio.BookApp.presentation.explore
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.naufatio.BookApp.data.BooksResponse
@@ -11,10 +12,12 @@ class ExploreViewModel(application: Application) : AndroidViewModel(application)
 
     var booksResponse = MutableLiveData<BooksResponse>()
 
-    fun searchBookByQuery(query: String) {
-        repository.searchBookQuery({
-            booksResponse.value = it
-        }, {}, query)
+    fun searchBookWithoutTerms(query: String?) {
+        query?.let {
+            repository.getBookByQuery({
+                booksResponse.value = it
+            }, {}, it)
+        }
     }
 
     fun searchBookInTitle(title: String) {
