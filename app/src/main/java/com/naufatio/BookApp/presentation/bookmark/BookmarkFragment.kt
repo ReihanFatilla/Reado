@@ -7,13 +7,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.naufatio.BookApp.databinding.FragmentBookmarkBinding
+import com.naufatio.BookApp.presentation.detail.DetailViewModel
+import com.naufatio.BookApp.presentation.home.adapter.BookTabbarAdapter
 
 class BookmarkFragment : Fragment() {
 
     private var _binding: FragmentBookmarkBinding? = null
-
     private val binding get() = _binding!!
+
+    private var _viewModel: BookmarkViewModel? = null
+    private val viewModel get() = _viewModel as BookmarkViewModel
+
+
+    private lateinit var mAdapter: BookmarkAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +29,22 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+
+        _viewModel = ViewModelProvider(this)[BookmarkViewModel::class.java]
+        mAdapter = BookmarkAdapter()
+
+        setUpRecyclerView()
         return binding.root
+    }
+
+    private fun setUpRecyclerView() {
+        viewModel.getBookmark().observe(viewLifecycleOwner){
+            mAdapter.setData(it)
+        }
+        binding.rvBookmark.apply {
+            adapter = mAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
     }
 
     override fun onDestroyView() {
