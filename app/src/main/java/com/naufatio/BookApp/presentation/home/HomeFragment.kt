@@ -2,7 +2,6 @@ package com.naufatio.BookApp.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,6 +53,11 @@ class HomeFragment : Fragment() {
         setUpTabBarAndViewPager()
 
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
     }
 
     private fun setUpTabBarAndViewPager() {
@@ -116,7 +120,6 @@ class HomeFragment : Fragment() {
         adapter.addFragment("Technology")
         adapter.addFragment("Crime")
         adapter.addFragment("Economy")
-        adapter.addFragment("Horror")
         adapter.addFragment("Fashion")
         adapter.addFragment("Biography")
         adapter.addFragment("Cooking")

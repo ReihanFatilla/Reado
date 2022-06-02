@@ -2,6 +2,7 @@ package com.naufatio.BookApp.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.R
 import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
+import com.naufatio.BookApp.data.local.room.Book
 import com.naufatio.BookApp.databinding.ActivityDetailBinding
 import com.naufatio.BookApp.helper.HelperFunction
 import com.naufatio.BookApp.helper.constant
@@ -22,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
 
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel as DetailViewModel
+    lateinit var rating: String
 
     private var intentData: ItemsItem? = null
 
@@ -34,15 +37,39 @@ class DetailActivity : AppCompatActivity() {
         intentData = intent.getParcelableExtra(constant.EXTRA_BOOK_INTENT)
 
         setUpDetail()
+        setUpFavoriteFeature()
 
         val bookId = intentData?.id
         bookId?.let { saveRecentViewedBook(it) }
     }
 
+    private fun setUpFavoriteFeature() {
+        binding.apply {
+            btnFavorite.setOnClickListener {
+                if (btnFavorite.isChecked) {
+                    var bookmarkBook = Book(
+                        intentData?.id!!,
+                        intentData?.volumeInfo?.title!!,
+                        intentData?.volumeInfo?.authors?.get(0)!!,
+                        intentData?.volumeInfo?.description!!,
+                        intentData?.volumeInfo?.imageLinks?.thumbnail!!,
+                        rating,
+                        )
+                    viewModel.addBookmark(bookmarkBook)
+                    Toast.makeText(applicationContext, "${intentData?.volumeInfo?.title} added to bookmark", Toast.LENGTH_SHORT).show()
+                } else {
+
+                }
+            }
+        }
+    }
+
     private fun setUpDetail() {
         var authors = ""
         var image: String? = ""
-        var rating = (intentData?.volumeInfo?.averageRating ?: (1..9).random()).toString() + "." + (intentData?.volumeInfo?.averageRating ?: (1..9).random()).toString()
+        rating = (intentData?.volumeInfo?.averageRating
+            ?: (1..9).random()).toString() + "." + (intentData?.volumeInfo?.averageRating
+            ?: (1..9).random()).toString()
         if (intentData?.volumeInfo?.authors != null) {
             authors = intentData!!.volumeInfo?.authors?.joinToString(", ") ?: ""
         } else {
@@ -59,7 +86,6 @@ class DetailActivity : AppCompatActivity() {
             tvDescBook.text = intentData?.volumeInfo?.description
             tvBookAuthor.text = authors
             tvBookRating.text = rating
-            tvRatingMaturerity.text = intentData?.volumeInfo?.maturityRating
 
             Glide.with(this@DetailActivity)
                 .load(image)

@@ -12,7 +12,7 @@ interface ApiService {
     @GET("volumes")
     fun bookSearchQuery(
         @Query("q") query: String,
-        @Query("orderBy") category: String = "newest"
+        @Query("orderBy") orderBy: String = "newest"
     ): Flowable<BooksResponse>
 
     @GET("volumes/{id}")

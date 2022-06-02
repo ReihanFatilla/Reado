@@ -47,6 +47,17 @@ class BookRepository(context: Context) {
             })
     }
 
+    fun searchBookQuery(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, query: String) {
+        apiService.bookSearchQuery(query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseHandler(it)
+            }, {
+                errorHandler(it)
+            })
+    }
+
     fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
         apiService.bookBySearchWithSort("$title+intitle:$title")
             .subscribeOn(Schedulers.io())
@@ -93,7 +104,7 @@ class BookRepository(context: Context) {
         preferences.put(key, value)
     }
 
-    fun addBookmark(book: Book) {
+    suspend fun addBookmark(book: Book) {
         dao.addBookmark(book)
     }
 
@@ -101,7 +112,7 @@ class BookRepository(context: Context) {
         return dao.getAllBookmark()
     }
 
-    fun deleteBookmark(book: Book) {
+    suspend fun deleteBookmark(book: Book) {
         dao.deleteBookmark(book)
     }
 

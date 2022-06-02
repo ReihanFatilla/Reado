@@ -1,13 +1,13 @@
 package com.naufatio.BookApp
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.naufatio.BookApp.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navView.setupWithNavController(navController)
+
+//        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//
+//        val builder = AlarmReceiver().showRandomNotification(this, "Bumi")
+//        manager.notify(0, builder.build())
 
         // hide action bar
         supportActionBar?.hide()
