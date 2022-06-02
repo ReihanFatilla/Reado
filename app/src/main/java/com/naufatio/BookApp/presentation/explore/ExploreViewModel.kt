@@ -1,6 +1,7 @@
 package com.naufatio.BookApp.presentation.explore
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.naufatio.BookApp.data.BooksResponse
@@ -14,7 +15,9 @@ class ExploreViewModel(application: Application) : AndroidViewModel(application)
     fun searchBookInTitle(title: String) {
         repository.getBookByTitle({
             booksResponse.value = it
-        }, {}, title)
+        }, {
+            Log.e("Explore", "searchBookInTitle: $it", )
+        }, title)
     }
 
     fun searchBookInAuthor(author: String) {

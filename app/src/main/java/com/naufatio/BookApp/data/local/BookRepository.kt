@@ -37,7 +37,7 @@ class BookRepository(context: Context) {
     }
 
     fun getBookByCategory(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, category: String) {
-        apiService.bookSearchByCategory("$category+subject:")
+        apiService.bookSearchByCategory("$category+subject:$category")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -48,7 +48,7 @@ class BookRepository(context: Context) {
     }
 
     fun getBookByTitle(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, title: String) {
-        apiService.bookBySearchWithSort("$title+intitle:")
+        apiService.bookBySearchWithSort("$title+intitle:$title")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -60,7 +60,7 @@ class BookRepository(context: Context) {
 
 
     fun getBookByAuthor(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, author: String) {
-        apiService.bookBySearchWithSort("$author+inauthor:")
+        apiService.bookBySearchWithSort("$author+inauthor:$author")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -71,7 +71,7 @@ class BookRepository(context: Context) {
     }
 
     fun getBookByPublisher(responseHandler: (BooksResponse) -> Unit, errorHandler: (Throwable) -> Unit, author: String) {
-        apiService.bookBySearchWithSort("$author+inpublisher:")
+        apiService.bookBySearchWithSort("$author+inpublisher:$author")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
