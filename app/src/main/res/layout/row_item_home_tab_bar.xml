@@ -70,7 +70,7 @@
             android:id="@+id/tv_desc_book"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="53dp"
             android:fontFamily="@font/poppins_medium"
             android:text="A Bedtime Story For Kids"
@@ -78,7 +78,7 @@
             android:ellipsize="end"
             android:textColor="@color/grey"
             android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_click_for_detail"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_author_book"
             app:layout_constraintTop_toBottomOf="@id/tv_author_book" />
