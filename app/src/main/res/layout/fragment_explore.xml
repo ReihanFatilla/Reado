@@ -23,6 +23,14 @@
             android:queryHint="Search for a book"
             app:defaultQueryHint="Search for a book" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_explore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/sv_book"
+            android:layout_marginTop="40dp"
+            tools:listitem="@layout/row_item_home_tab_bar" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_sort_by"
             android:layout_width="match_parent"
