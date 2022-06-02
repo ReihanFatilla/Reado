@@ -39,7 +39,7 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
 
         var authors = ""
         var image: String? = ""
-        var rating = (data.volumeInfo?.averageRating ?: (1..10).random()).toString() + "." + (data.volumeInfo?.averageRating ?: (1..10).random()).toString()
+        var rating = (data.volumeInfo?.averageRating ?: (1..9).random()).toString() + "." + (data.volumeInfo?.averageRating ?: (1..9).random()).toString()
 
         if (data.volumeInfo?.authors != null) {
             authors = data.volumeInfo.authors.joinToString(", ")
