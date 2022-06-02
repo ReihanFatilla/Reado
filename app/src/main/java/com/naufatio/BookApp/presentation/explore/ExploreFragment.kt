@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +50,7 @@ class ExploreFragment : Fragment() {
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.searchBookWithoutTerms(query)
+                binding.cvSortBy.visibility = View.GONE
                 return false
             }
 
@@ -81,17 +81,22 @@ class ExploreFragment : Fragment() {
         binding.apply {
             cvSearchTitle.setOnClickListener {
                 viewModel.searchBookInTitle(text)
+                binding.cvSortBy.visibility = View.GONE
+
             }
             cvSearchAuthor.setOnClickListener {
                 viewModel.searchBookInAuthor(text)
+                binding.cvSortBy.visibility = View.GONE
 
             }
             cvSearchCategory.setOnClickListener {
                 viewModel.searchBookInCategory(text)
+                binding.cvSortBy.visibility = View.GONE
 
             }
             cvSearchPublisher.setOnClickListener {
                 viewModel.searchBookInPublisher(text)
+                binding.cvSortBy.visibility = View.GONE
 
             }
         }
