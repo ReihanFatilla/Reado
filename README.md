@@ -32,7 +32,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="/images/MockUp.png" alt="Product Images">
 
 Reado (Read Book) is an android application that aims to make it easier to search, find, and find out what books are available on Google books api. This application has several features including:
 
