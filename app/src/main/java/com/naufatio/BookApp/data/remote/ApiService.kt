@@ -28,13 +28,15 @@ interface ApiService {
     @GET("volumes")
     fun bookRandomCategory(
         @Query("q") query: String,
-        @Query("orderBy") category: String = "newest"
+        @Query("printType") printType: String = "books",
+//        @Query("orderBy") category: String = "newest"
     ): Flowable<BooksResponse>
 
     @GET("volumes")
     fun bookSearchByCategory(
         @Query("q") query: String,
-        @Query("orderBy") category: String = "newest"
+        @Query("printType") printType: String = "books",
+//        @Query("orderBy") category: String = "newest"
     ): Flowable<BooksResponse>
 
     fun bookSearchByAuthor(
