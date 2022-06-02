@@ -183,12 +183,11 @@
                     android:id="@+id/rv_home_recommendations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="-12dp"
-                    android:layout_marginEnd="-12dp"
-                    tools:listitem="@layout/row_item_home_recommendation"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/tv_books_for_you" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/tv_books_for_you"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:listitem="@layout/row_item_home_recommendation" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
