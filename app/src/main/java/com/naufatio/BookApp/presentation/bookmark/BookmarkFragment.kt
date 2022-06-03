@@ -1,13 +1,16 @@
 package com.naufatio.BookApp.presentation.bookmark
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naufatio.BookApp.databinding.FragmentBookmarkBinding
+import com.naufatio.BookApp.notification.NotificationService
 import com.naufatio.BookApp.presentation.bookmark.adapter.BookmarkAdapter
 
 class BookmarkFragment : Fragment() {

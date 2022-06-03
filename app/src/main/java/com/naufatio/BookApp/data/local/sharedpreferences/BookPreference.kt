@@ -40,6 +40,11 @@ class BookPreference(context: Context) {
         return sharedPreferences.getString(key, null)
     }
 
+    fun remove(key: String){
+        prefEditor.remove(key)
+            .apply()
+    }
+
     fun clear(){
         prefEditor.clear()
             .apply()

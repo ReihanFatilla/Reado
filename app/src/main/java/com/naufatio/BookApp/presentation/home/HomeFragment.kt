@@ -19,6 +19,7 @@ import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.databinding.FragmentHomeBinding
 import com.naufatio.BookApp.helper.OnItemClickCallback
 import com.naufatio.BookApp.helper.constant
+import com.naufatio.BookApp.notification.NotificationService
 import com.naufatio.BookApp.presentation.detail.DetailActivity
 import com.naufatio.BookApp.presentation.home.adapter.BookRecommendationsAdapter
 
@@ -49,6 +50,9 @@ class HomeFragment : Fragment() {
         val id = viewModel.getRecentBookId().toString()
         viewModel.getBooksById(id)
         viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
+
+//        NotificationService().createNotificationChannel(requireContext())
+//        NotificationService().scheduleNotification(requireContext(), "iyaa", "okeee")
 
         setUpTabBarAndViewPager()
 

@@ -1,5 +1,6 @@
 package com.naufatio.BookApp.presentation.bookmark.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,6 +12,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.naufatio.BookApp.data.local.room.Book
 import com.naufatio.BookApp.databinding.RowItemHomeTabBarBinding
 import com.naufatio.BookApp.helper.BookDiffUtil
+import com.naufatio.BookApp.helper.constant
+import com.naufatio.BookApp.notification.NotificationService
+import com.naufatio.BookApp.presentation.detail.DetailActivity
 
 class BookmarkAdapter:RecyclerView.Adapter<BookmarkAdapter.MyViewHolder>() {
 
@@ -48,7 +52,11 @@ class BookmarkAdapter:RecyclerView.Adapter<BookmarkAdapter.MyViewHolder>() {
         }
 
         holder.itemView.setOnClickListener {
-
+            // intent to detail
+            holder.binding.tvDescBook.context.startActivity(
+                Intent(holder.binding.tvDescBook.context, DetailActivity::class.java)
+                    .putExtra(constant.EXTRA_BOOKMARK_INTENT, data)
+            )
         }
     }
 

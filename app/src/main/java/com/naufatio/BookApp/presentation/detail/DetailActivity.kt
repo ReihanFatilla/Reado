@@ -27,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var rating: String
 
     private var intentData: ItemsItem? = null
+    private var intentBookmark: Book? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,11 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-        intentData = intent.getParcelableExtra(constant.EXTRA_BOOK_INTENT)
+        if(intentData != null){
+            intentData = intent.getParcelableExtra(constant.EXTRA_BOOK_INTENT)
+        } else {
+            intentBookmark = intent.getParcelableExtra(constant.EXTRA_BOOKMARK_INTENT)
+        }
 
         setUpDetail()
         setUpFavoriteFeature()
@@ -67,23 +72,40 @@ class DetailActivity : AppCompatActivity() {
     private fun setUpDetail() {
         var authors = ""
         var image: String? = ""
-        rating = (intentData?.volumeInfo?.averageRating
-            ?: (1..9).random()).toString() + "." + (intentData?.volumeInfo?.averageRating
-            ?: (1..9).random()).toString()
-        if (intentData?.volumeInfo?.authors != null) {
-            authors = intentData!!.volumeInfo?.authors?.joinToString(", ") ?: ""
+        var desc: String? = ""
+        var title: String? = ""
+        if (intentData != null){
+            rating = (intentData?.volumeInfo?.averageRating
+                ?: (1..9).random()).toString() + "." + (intentData?.volumeInfo?.averageRating
+                ?: (1..9).random()).toString()
+            if (intentData?.volumeInfo?.authors != null) {
+                authors = intentData!!.volumeInfo?.authors?.joinToString(", ") ?: ""
+            } else {
+                authors = "-"
+            }
+            if (intentData?.volumeInfo?.imageLinks?.large != null) {
+                image = intentData?.volumeInfo!!.imageLinks?.large
+            } else {
+                image = intentData?.volumeInfo?.imageLinks?.thumbnail
+            }
+            desc = intentData?.volumeInfo?.description
+            title = intentData?.volumeInfo?.title
         } else {
-            authors = "-"
-        }
-        if (intentData?.volumeInfo?.imageLinks?.large != null) {
-            image = intentData?.volumeInfo!!.imageLinks?.large
-        } else {
-            image = intentData?.volumeInfo?.imageLinks?.thumbnail
+            rating = intentBookmark?.rating ?: "0.0"
+            if (intentBookmark?.author != null) {
+                authors = intentBookmark!!.author
+            } else {
+                authors = "-"
+            }
+            image = intentBookmark?.imageUrl
+            desc = intentBookmark?.description
+            title = intentBookmark?.title
         }
 
+
         binding.apply {
-            tvBookTitle.text = intentData?.volumeInfo?.title
-            tvDescBook.text = intentData?.volumeInfo?.description
+            tvBookTitle.text = title
+            tvDescBook.text = desc
             tvBookAuthor.text = authors
             tvBookRating.text = rating
 
