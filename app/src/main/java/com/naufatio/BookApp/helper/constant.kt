@@ -2,6 +2,8 @@ package com.naufatio.BookApp.helper
 
 object constant {
 
+    const val EXTRA_ORIGIN = "EXTRA_ORIGIN"
+    const val EXTRA_ORIGIN_BOOKMARK = "EXTRA_ORIGIN_BOOKMARK"
     val BooksRecommendation = arrayListOf<String>(
         "Technology",
         "Help",

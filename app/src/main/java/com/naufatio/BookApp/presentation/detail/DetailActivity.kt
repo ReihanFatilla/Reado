@@ -8,14 +8,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.naufatio.BookApp.R
-import com.naufatio.BookApp.data.BooksResponse
 import com.naufatio.BookApp.data.ItemsItem
 import com.naufatio.BookApp.data.local.room.Book
 import com.naufatio.BookApp.databinding.ActivityDetailBinding
 import com.naufatio.BookApp.helper.HelperFunction
 import com.naufatio.BookApp.helper.constant
-import com.naufatio.BookApp.presentation.home.HomeViewModel
 
 class DetailActivity : AppCompatActivity() {
 
@@ -35,10 +32,10 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-        if(intentData != null){
-            intentData = intent.getParcelableExtra(constant.EXTRA_BOOK_INTENT)
-        } else {
+        if(intent.getStringExtra(constant.EXTRA_ORIGIN) == constant.EXTRA_ORIGIN_BOOKMARK){
             intentBookmark = intent.getParcelableExtra(constant.EXTRA_BOOKMARK_INTENT)
+        } else {
+            intentData = intent.getParcelableExtra(constant.EXTRA_BOOK_INTENT)
         }
 
         setUpDetail()
