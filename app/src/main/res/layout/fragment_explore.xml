@@ -28,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/sv_book"
-            android:layout_marginTop="40dp"
             tools:listitem="@layout/row_item_home_tab_bar" />
 
         <com.google.android.material.card.MaterialCardView
