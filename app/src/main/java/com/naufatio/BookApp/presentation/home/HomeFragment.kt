@@ -33,6 +33,8 @@ class HomeFragment : Fragment() {
     private var _viewModel: HomeViewModel? = null
     private val viewModel get() = _viewModel as HomeViewModel
 
+    private lateinit var id: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +49,7 @@ class HomeFragment : Fragment() {
         viewModel.getRandomBooks(getRandomBookCategories)
         viewModel.booksResponse.observe(viewLifecycleOwner) { setupRecyclerView(it.items) }
 
-        val id = viewModel.getRecentBookId().toString()
+        id = viewModel.getRecentBookId().toString()
         viewModel.getBooksById(id)
         viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
 
@@ -62,6 +64,8 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        id = viewModel.getRecentBookId().toString()
+        viewModel.getBooksById(id)
         viewModel.recentBooksResponse.observe(viewLifecycleOwner){ setUpRecentViewedBook(it) }
     }
 

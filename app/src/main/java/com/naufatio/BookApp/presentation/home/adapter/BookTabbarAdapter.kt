@@ -60,7 +60,6 @@ class BookTabbarAdapter:RecyclerView.Adapter<BookTabbarAdapter.MyViewHolder>() {
             Glide.with(imgBook.context)
                 .load(image)
                 .apply(RequestOptions())
-                .override(500, 500)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .into(imgBook)
