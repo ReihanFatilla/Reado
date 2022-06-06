@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
 //        NotificationService().createNotificationChannel(requireContext())
 //        NotificationService().scheduleNotification(requireContext(), "iyaa", "okeee")
 
+
         setUpTabBarAndViewPager()
 
         return binding.root

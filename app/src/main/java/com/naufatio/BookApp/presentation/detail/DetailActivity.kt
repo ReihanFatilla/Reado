@@ -60,7 +60,11 @@ class DetailActivity : AppCompatActivity() {
                     viewModel.addBookmark(bookmarkBook)
                     Toast.makeText(applicationContext, "${intentData?.volumeInfo?.title} added to bookmark", Toast.LENGTH_SHORT).show()
                 } else {
-
+                    intentBookmark?.let { it1 ->
+                        viewModel.deleteBookmark(
+                            it1
+                        )
+                    }
                 }
             }
         }
@@ -88,6 +92,7 @@ class DetailActivity : AppCompatActivity() {
             desc = intentData?.volumeInfo?.description
             title = intentData?.volumeInfo?.title
         } else {
+            binding.btnFavorite.isChecked = true
             rating = intentBookmark?.rating ?: "0.0"
             if (intentBookmark?.author != null) {
                 authors = intentBookmark!!.author
