@@ -114,7 +114,6 @@ class DetailActivity : AppCompatActivity() {
             Glide.with(this@DetailActivity)
                 .load(image)
                 .apply(RequestOptions())
-                .override(500, 500)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .into(imgBookDetail)
