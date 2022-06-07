@@ -137,7 +137,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    class Adapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
+    inner class Adapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
         private val mFragmentList: MutableList<Fragment> = ArrayList()
         private val mFragmentTitleList: MutableList<String> = ArrayList()
         override fun getItem(position: Int): Fragment {

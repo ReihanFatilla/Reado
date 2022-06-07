@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.naufatio.BookApp.databinding.ActivityMainBinding
+import com.naufatio.BookApp.notification.NotificationService
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         binding.swipeRefreshLayout.setOnRefreshListener{
             recreate()
         }
+
+        NotificationService().scheduleNotification(applicationContext, "sdasdsad", "messageee")
 
         val navView: BottomNavigationView = binding.navView
 
@@ -43,4 +46,5 @@ class MainActivity : AppCompatActivity() {
         // hide action bar
         supportActionBar?.hide()
     }
+    
 }

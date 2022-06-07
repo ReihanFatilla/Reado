@@ -52,7 +52,6 @@ class BookmarkAdapter:RecyclerView.Adapter<BookmarkAdapter.MyViewHolder>() {
         }
 
         holder.itemView.setOnClickListener {
-            // intent to detail
             holder.binding.tvDescBook.context.startActivity(
                 Intent(holder.binding.tvDescBook.context, DetailActivity::class.java)
                     .putExtra(constant.EXTRA_BOOKMARK_INTENT, data)
